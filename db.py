@@ -23,7 +23,7 @@ def make_db(chunks, db_path: str = "db"):
 
     new_indices = [i for i in range(len(chunks)) if f"chunk_{i}" not in existing_ids]
     if not new_indices:
-        print(f"✅ No new chunks to add. Using existing ChromaDB at '{db_path}'")
+        print(f"No new chunks to add. Using existing ChromaDB at '{db_path}'")
         return collection
 
     new_chunks = [chunks[i] for i in new_indices]
@@ -31,7 +31,7 @@ def make_db(chunks, db_path: str = "db"):
     new_ids = [f"chunk_{i}" for i in new_indices]
 
     collection.add(documents=new_chunks, embeddings=new_embeddings, ids=new_ids)
-    print(f"✅ Stored {len(new_chunks)} new chunks in ChromaDB at '{db_path}'")
+    print(f"Stored {len(new_chunks)} new chunks in ChromaDB at '{db_path}'")
     return collection
 
 
